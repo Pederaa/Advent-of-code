@@ -23,11 +23,6 @@ with open("2025\\3. desember\\input.txt") as file:
             except:
                 pass
 
-        print(f"A: {line}")
-        print(f"B: {''.join(li)}")
-        li = list(line)[l+1:len(line)]
-        print(f"C: {''.join(li)}")
-
         for k in k_values:
             try:
                 l = li.index(str(k))
@@ -36,9 +31,7 @@ with open("2025\\3. desember\\input.txt") as file:
                 break
             except:
                 pass
-        
-        print(f"C: { ''.join(li) }" )
-        print(f"first_index: {first_index} \t second_index: {second_index} \n\n")
+
         total += int(first_index)*10 + int(second_index)
 
     print(f"Svar: {total}")
