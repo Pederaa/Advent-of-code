@@ -6,7 +6,11 @@ with open("2025\\3. desember\\input.txt") as file:
     k_values.reverse()
 
     for line in file:
-        li = list(line)[:len(line)-1]
+        
+        if line[-1] == '\n':
+            line = line[:-1]
+
+        li = list(line)[:int(len(line)-1)]
 
         first_index = ''
         second_index = ''
