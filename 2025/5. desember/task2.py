@@ -1,11 +1,3 @@
-def is_fresh(fresh_ranges, ing):
-    for i in range(len(fresh_ranges)):
-        print(f"ingredient: {ing} \t range({fresh_ranges[i][0]}, {fresh_ranges[i][1]}")
-        if ing >= int(fresh_ranges[i][0]) and ing <= int(fresh_ranges[i][1]):
-            return True
-
-    return False
-
 id_ranges = []
 with open("2025\\5. desember\\input.txt") as file:
     for line in file:
