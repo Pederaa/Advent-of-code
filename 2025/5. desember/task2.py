@@ -1,5 +1,6 @@
 def is_fresh(fresh_ranges, ing):
     for i in range(len(fresh_ranges)):
+        print(f"ingredient: {ing} \t range({fresh_ranges[i][0]}, {fresh_ranges[i][1]}")
         if ing >= int(fresh_ranges[i][0]) and ing <= int(fresh_ranges[i][1]):
             return True
 
@@ -14,17 +15,26 @@ with open("2025\\5. desember\\input.txt") as file:
             break
     
         lower, upper = line.split("-")
-        id_ranges.append((lower, upper))
+        id_ranges.append([int(lower), int(upper)])
 
-max_value = 0
-for i in range(len(id_ranges)):
-    if int(id_ranges[i][1]) >= max_value:
-        max_value = int(id_ranges[i][1])
+id_ranges.sort()
+new_list = [id_ranges[0]]
+
+for i in range(1, len(id_ranges)):
+    if id_ranges[i][0] > new_list[-1][1]:
+        new_list.append(id_ranges[i])
+    
+    elif id_ranges[i][1] >= new_list[-1][1]:
+        new_list[-1][1] = id_ranges[i][1]
+    
+    else:
+        continue
+
+print(new_list)
 
 total_fresh = 0
-for j in range(max_value+1):
-    if is_fresh(id_ranges, j):
-        total_fresh += 1
+for j in range(len(new_list)):
+    total_fresh += new_list[j][1] - new_list[j][0] + 1
+    print(f"total fresh: {total_fresh}")
 
-print(f"max: {max_value}")
 print(f"Svar: {total_fresh}")
