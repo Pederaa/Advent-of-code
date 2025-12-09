@@ -32,7 +32,6 @@ while len(beamPos) > 0 and c < 1000000:
         
         del beamPos[0]
 
-
     elif env[y+1][x] == "^":
         
         yl, xl = (y+1, x-1)
