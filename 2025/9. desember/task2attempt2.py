@@ -8,6 +8,3 @@ if __name__ == "__main__":
     for i in range(len(contents)):
         x, y = contents[i].split(",")
         corners.append((x, y))
-    
-
-    

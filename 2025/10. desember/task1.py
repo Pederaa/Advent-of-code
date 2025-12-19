@@ -3,41 +3,44 @@ from functools import cache
 def pressButton(indicator, button):
     button = button.strip()[1:-1]
     indicies = button.split(",")
+    print(f"indicies: {indicies} \t button: {button}")
 
-    for ind in indicies:
-        if indicator[int(ind)] == '#':
-            indicator[int(ind)] = '.'
-        elif indicator[int(ind)] == '.':
-            indicator[int(ind)] = '#'
+    temp = ""
+    for ind in range(len(indicies)):
+        print("Hei")
+        if indicator[int(ind)] == "#":
+            temp = temp + "."
+        elif indicator[int(ind)] == ".":
+            temp = temp + "#"
         else:
             raise ValueError(f"Unrecognised symbol: {indicator[int(ind)]}")
     
-    return indicator
+    print(f"Temp: {temp}")
+    return temp
 
-@cache
 def find_fewest_presses(indicator, buttons, sol):
-    if indicator == sol:
-        return 1
-    if len(buttons) == 0:
-        return 0
-
     que = []
+    buttons = buttons.split()
+    for button in buttons:
+        new_indicator = pressButton(indicator, button)
+        que.append((new_indicator, 1))
 
-    temp = buttons.split(" ")
-    min_switches = 200
-    for button in buttons.split(" "):
-        temp.remove(button)
-        res = find_fewest_presses(indicator, " ".join(temp), sol)
-        
-        if res != 0:
-            min_switches = min(min_switches, res+1)
-        
-        temp = buttons.split(" ")
-    
-    if min_switches == 200:
-        raise ValueError(f"Fant ingen løsning")
+    c = 0
+    while len(que) != 0 and c < 2:
+        c += 1
+        indicator, presses = que[0]
 
-    return min_switches
+        print(f"que: {que}")
+
+        for button in buttons:
+            new_indicator = pressButton(indicator, button)
+
+            if new_indicator == sol:
+                return presses
+            
+            que.append((new_indicator,  presses+1))
+        
+        del que[0]
 
 if __name__ == "__main__":
     with open("2025\\10. desember\\input.txt") as file:
