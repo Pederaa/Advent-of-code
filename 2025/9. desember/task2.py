@@ -9,7 +9,7 @@ def isInBox(c1, c2, P):
 
 
 if __name__ == "__main__":
-    with open("2025\\9. desember\\input.txt") as file:
+    with open("..\\Advent of code inputs\\2025\\9.txt") as file:
         contents = file.readlines()
 
     max_area = 0

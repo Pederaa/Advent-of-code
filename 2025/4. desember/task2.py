@@ -90,7 +90,7 @@ def is_going_to_remove(prevline, currentline, nextline, i):
     return currentline[i]
 
 if __name__ == "__main__":
-    with open("2025\\4. desember\\input1.txt") as file:
+    with open("..\\Advent of code inputs\\2025\\4.txt") as file:
         contents = file.readlines()
 
     contents, num = apply_func_ontable(count_surrounding_bales, contents)

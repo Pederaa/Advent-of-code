@@ -1,4 +1,4 @@
-with open("2025\\5. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\5.txt") as file:
     id_ranges = []
     fresh_count = 0
     for line in file:

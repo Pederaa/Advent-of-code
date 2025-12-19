@@ -10,7 +10,7 @@ def find_largest_left(id, n):
 
     return str(id[maxid]) + find_largest_left(id[maxid+1:], n-1)
 
-with open("2025\\3. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\3.txt") as file:
     total = 0
     for line in file:
         if line[-1] == '\n':

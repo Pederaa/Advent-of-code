@@ -1,5 +1,5 @@
 
-file = open("1. desember\input1.txt")
+file = open("..\\Advent of code inputs\\2025\\2.txt")
 
 password = 0
 dial_pos = 50

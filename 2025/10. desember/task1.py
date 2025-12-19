@@ -43,7 +43,7 @@ def find_fewest_presses(indicator, buttons, sol):
         del que[0]
 
 if __name__ == "__main__":
-    with open("2025\\10. desember\\input.txt") as file:
+    with open("..\\Advent of code inputs\\2025\\10.txt") as file:
         contents = file.readlines()
 
     total = 0

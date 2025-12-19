@@ -30,7 +30,7 @@ def is_bale(prevline, currentline, nextline, i , j, h):
     return 0
 
 
-with open("2025\\4. desember\\input1.txt") as file:
+with open("..\\Advent of code inputs\\2025\\4.txt") as file:
     currentline = file.readline()
     prevline = ["." for _ in range(len(currentline))]
     nextline = file.readline()

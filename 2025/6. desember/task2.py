@@ -28,7 +28,7 @@ def sumthethingy(contents, i, j, operation):
     return partial_sum
 
 
-with open("2025\\6. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\6.txt") as file:
     contents = file.readlines()
 
 operations = contents[-1]

@@ -50,7 +50,7 @@ def step(beamPos, env):
         print("Error")
         raise ValueError(f"Symbol not recognised: {env[y+1][x]}")
 
-with open("2025\\7. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\7.txt") as file:
     env = file.readlines()
 
 for i in range(len(env)):

@@ -19,7 +19,7 @@ def find_repeating_digits(id_range):
 
     return fakeid_sum
 
-with open("2025\\2. desember\\input1.txt") as file:
+with open("..\\Advent of code inputs\\2025\\2.txt") as file:
     contents = file.read()
 
     comma = contents.find(',')

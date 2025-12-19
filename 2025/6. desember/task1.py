@@ -1,4 +1,4 @@
-with open("2025\\6. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\6.txt") as file:
     conntents = file.readlines()
 print(f"len: {len(conntents)}")
 

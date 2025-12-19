@@ -1,5 +1,5 @@
 id_ranges = []
-with open("2025\\5. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\5.txt") as file:
     for line in file:
         if line[-1] == '\n':
             line = line[:-1]

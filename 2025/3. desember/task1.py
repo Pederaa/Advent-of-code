@@ -1,6 +1,6 @@
 
 
-with open("2025\\3. desember\\input.txt") as file:
+with open("..\\Advent of code inputs\\2025\\3.txt") as file:
     total = 0
     k_values = list(range(0, 9+1))
     k_values.reverse()
