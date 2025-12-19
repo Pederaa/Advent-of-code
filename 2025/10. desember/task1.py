@@ -15,18 +15,19 @@ def pressButton(indicator, button):
     return indicator
 
 @cache
-def tryPressingButton(indicator, buttons, sol):
+def find_fewest_presses(indicator, buttons, sol):
     if indicator == sol:
         return 1
     if len(buttons) == 0:
         return 0
 
+    que = []
+
     temp = buttons.split(" ")
     min_switches = 200
     for button in buttons.split(" "):
-        print(button)
         temp.remove(button)
-        res = tryPressingButton(indicator, " ".join(temp), sol)
+        res = find_fewest_presses(indicator, " ".join(temp), sol)
         
         if res != 0:
             min_switches = min(min_switches, res+1)
@@ -36,27 +37,26 @@ def tryPressingButton(indicator, buttons, sol):
     if min_switches == 200:
         raise ValueError(f"Fant ingen løsning")
 
-    print(min_switches)
     return min_switches
 
+if __name__ == "__main__":
+    with open("2025\\10. desember\\input.txt") as file:
+        contents = file.readlines()
 
-with open("2025\\10. desember\\input.txt") as file:
-    contents = file.readlines()
+    total = 0
+    for line in contents:
+        i1, i2 = line.find("["), line.find("]")
+        c1, c2 = line.find("("), line.find("{")
 
-total = 0
-for line in contents:
-    i1, i2 = line.find("["), line.find("]")
-    c1, c2 = line.find("("), line.find("{")
+        indicator = line[i1+1:i2]
+        buttons = line[c1:c2-1]
 
-    indicator = line[i1+1:i2]
-    buttons = line[c1:c2-1]
+        sol = ""
+        for _ in range(len(indicator)):
+            sol += "."
+            
+        temp = find_fewest_presses(indicator, buttons, sol)
+        total += temp
+        break
 
-    sol = ""
-    for _ in range(len(indicator)):
-        sol += "."
-        
-    temp = tryPressingButton(indicator, buttons, sol)
-    total += temp
-    break
-
-print(f"svar: {total}")
+    print(f"svar: {total}")

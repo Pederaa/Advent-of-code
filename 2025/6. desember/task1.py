@@ -5,8 +5,6 @@ print(f"len: {len(conntents)}")
 for i in range(len(conntents)):
     conntents[i] = conntents[i].split()
 
-# print(conntents[1])
-
 total_value = 0
 for col in range(len(conntents[0])):
 
@@ -18,6 +16,7 @@ for col in range(len(conntents[0])):
             temp += int(conntents[i][col])
 
     elif conntents[-1][col] == "*":
+        temp = 1
         for i in range(len(conntents)-1):
             print(conntents[i][col], end="")
             print(" * ", end="")
@@ -26,6 +25,9 @@ for col in range(len(conntents[0])):
     else:
         raise ValueError(f"Operand not recognised:  {conntents[-1][col]}")
     
+    print(f" = {temp}")
+    print()
+    print()
     total_value += temp
 
 print(f"Svar: {total_value}")

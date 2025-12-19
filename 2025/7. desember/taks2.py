@@ -1,38 +1,15 @@
-with open("2025\\7. desember\\input.txt") as file:
-    env = file.readlines()
-
-for i in range(len(env)):
-    g = list(env[i])
-    env[i] = g
-
-beamPos = []
-first = env[0].index('S')
-
-beamPos.append([1, first])
-env[1][first] = 1
-
-c = 0
-total = 0
-beamSedstroyedPos = []
-while len(beamPos) > 0 and c < 1000000:
-    c += 1
-
+def step(beamPos, env):
     y, x = beamPos[0]
-    
     try:
         num = int(env[y][x])
     except:
         raise ValueError(f"{env[y][x]} is not intable")
 
     if y+1 >= len(env):
-        if x not in beamSedstroyedPos:
-            total += num
-            beamSedstroyedPos.append(x)
-            env[y][x] = num
-        
-        del beamPos[0]
+        raise ValueError("Hello there")
 
-    elif env[y+1][x] == "^":
+
+    if env[y+1][x] == "^":
         
         yl, xl = (y+1, x-1)
         if [yl, xl] not in beamPos and xl >= 0:
@@ -64,16 +41,50 @@ while len(beamPos) > 0 and c < 1000000:
         beamPos[0] = [y+1, x]
     
     elif type(env[y+1][x]) == type(int()):
-        env[y+1][x] = env[y+1][x]
+        print("Error")
+        num = env[y+1][x] + env[y][x]
+        env[y+1][x] = num
+        beamPos[0] = [y+1, x]
     
     else:
-        continue
+        print("Error")
         raise ValueError(f"Symbol not recognised: {env[y+1][x]}")
+
+with open("2025\\7. desember\\input.txt") as file:
+    env = file.readlines()
+
+for i in range(len(env)):
+    g = list(env[i])
+    env[i] = g
+
+beamPos = []
+first = env[0].index('S')
+
+beamPos.append([1, first])
+env[1][first] = 1
+
+c = 0
+total = 0
+beamSedstroyedPos = []
+while len(beamPos) > 0 and c < 10000000:
+    c += 1
+    try:
+        step(beamPos, env)
+    
+    except ValueError:
+        y, x = beamPos[0]
+        num =  env[y, x]
+        
+        total += num
+        beamSedstroyedPos.append((y, x))
+        
+        del beamPos[0]
 
 
 print(beamPos)
 print(f"count: {c}")
 print(f"Svar: {total}")
 
-
-print(env)
+for i in range(len(env)):
+    for j in range(len(env[i])):
+        print(env[i][j], end="")
